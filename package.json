@@ -1,0 +1,16 @@
+{
+  "name": "smpte-ltc",
+  "version": "0.0.1",
+  "description": "Read an Manchester-Biphase encoded audio signal and decode it's SMPTE Timecode.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Spiegl <chris@chrisspiegl.com>",
+  "license": "ISC",
+  "dependencies": {
+    "audio-decode": "^1.4.0",
+    "lodash": "^4.17.20",
+    "smpte-timecode": "^1.2.3"
+  }
+}
