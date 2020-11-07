@@ -10,7 +10,7 @@ The goal is to have a node.js implementation of a SMPTE LTC decoder from audio f
 
 Experimental / Basic Prototype / Getting to know the Topic
 
-- Please participate and share ideas through the [Issues](./issues)
+- Please participate and share ideas through the [Issues](https://github.com/chrisspiegl/node-smpte-ltc/issues)
 
 ## Current Functionality
 
