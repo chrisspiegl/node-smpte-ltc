@@ -1,6 +1,6 @@
 # Node SMPTE LTC
 
-![current status](https://img.shields.io/badge/current%20status-experimental-brightgreen?style=flat-square)
+![current status](https://img.shields.io/badge/current%20status-halted-red?style=flat-square)
 
 Read an Manchester-Biphase encoded audio signal and extract/decode it's SMPTE Timecode.
 
@@ -59,3 +59,33 @@ Within the topic of SMPTE LTC Data, more ideas for Tools / Libraries / Projects:
 * C Library [libltc](https://github.com/x42/libltc)
 * [LTC-Tools](https://github.com/x42/ltc-tools) including ltcdump
 * [LTCsync](https://github.com/arikrupnik/ltcsync) — Desktop Utility for Syncing Media Files based on Electron and Node.js
+
+## Idea for a tool
+
+- Read Metadata via ffprobe for all files selected / opened
+- Display said metadata for all files
+- Figure out which files already have TimeCode Data in Metadata that is accurate?
+	- When is timecode data accurate?
+	- When does it make sense to analyze the audio?
+	- Does it make sense to analyze audio timecode data when there is timecode data?
+	- Maybe sometimes there is "default timecode" data that makes sense to ignore since it is not probable that that is real data?
+- Analysis of the files that may contain audio timecode data
+	- Strip Audio channels from all Video Files
+	- Potentially convert said audio channels to  `ffmpeg -i ./CSP_8307-1-right.wav -vn -acodec pcm_s16le -ar 48000 -ac 1 ./test.wav`
+	- Throw these files into `ltcdump` to figure out what the `Start TC` value is.
+	- Figure out which audio channels have good `Start TC` values… ignore those that do not.
+		- Mark files that do not have any TC audio channel as "do not have TC audio channel"
+		- Add meta data to the video file that the channel belonged to.
+	- Set this found TC as the meta data value and display this timecode in the interface.
+- Figure out a way to store this information in an XML document so that it can be imported into Premiere Pro as a timeline with everything nicely in sync.
+
+## Discussions
+
+- https://www.reddit.com/r/AudioPost/comments/fg61zf/is_there_a_way_to_convert_audio_timecode_to/
+
+## Professional Tools for Video SMPTE Timecode Syncing
+
+- [https://syncaila.com](https://syncaila.com/)
+- [https://shop.tentaclesync.com/product/tentacle-sync-studio/](https://shop.tentaclesync.com/product/tentacle-sync-studio/)
+- [https://www.redgiant.com/products/pluraleyes/](https://www.redgiant.com/products/pluraleyes/)
+- [https://sononum.net/horae#main-features](https://sononum.net/horae#main-features)
